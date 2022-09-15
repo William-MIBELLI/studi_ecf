@@ -3,7 +3,7 @@
     padding : 0;
 }
 .container{
-    background-image: url(./ressources/images/bg.jpg);
+    background-image: url(./ressources/images/bg1.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -72,7 +72,7 @@ button{
     cursor: pointer;
 }
 .sticker{
-    background-color: #790252;
+    background-color: #EE5007;
     writing-mode: vertical-lr;
     letter-spacing: 0.5px;
     padding: 5px;
@@ -89,4 +89,5 @@ footer{
     text-align: center;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: smaller;
 }
