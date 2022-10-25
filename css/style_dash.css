@@ -12,6 +12,9 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+body{
+    min-height: 100vh;
+}
 header{
     background-color: #141E27;
     height: 60px;
@@ -50,7 +53,7 @@ main{
     display:flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 101px);
+    min-height: calc(100vh - 121px);
 }
 
 .container{
@@ -126,9 +129,10 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: sticky;
+    position: relative;
     width: 100%;
     bottom: 0;
+    margin-top: 20px;
 }
 .sticker{
     background-color: #EE5007;
@@ -146,6 +150,15 @@ footer{
     right: 0;
     transform: translateY(-50%);
 }
+
+.request_end{
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+.request_end a{
+    margin-top: 20px;
+}
 /*      ///////////////     RESET BDD       ///////////////    */
 .reset_container{
     display: flex;
@@ -155,10 +168,49 @@ footer{
     height: 100vh;
 }
 
+
+/*      ///////////////     RESET PASSWORD      /////////////////// */
+
+#reset_pass_form{
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+#old_pass{
+    margin-bottom: 20px;
+}
+#reset_pass_form label{
+    margin: 5px 0;
+}
+#reset_pass_form button{
+    margin-top: 20px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 0;
+    background-color: #EE5007;
+    box-shadow: 5px 5px 15px grey;
+    color: white;
+}
+#reset_pass_form input{
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+#reset_pass_form input:hover{
+    border-color: #FFC900;
+}
+#reset_pass_form input:focus{
+    border: 1px solid #EE5007;
+}
 /*      //////////////     CREATION       /////////////////   */
 
 h2{
     margin:50px 0;
+}
+.creation_main{
+    flex-direction: column;
 }
 
 .container-creation{
@@ -392,6 +444,11 @@ form label{
     background-color: white;
     border: 1px solid #fa0b0b;
     color: #fa0b0b;
+}
+.active_btn{
+    background-color: white;
+    border: 1px solid #4cd137;
+    color: #4cd137;
 }
 .delete_btn{
     background-color: white;

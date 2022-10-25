@@ -11,19 +11,28 @@
     <title>Document</title>
 </head>
 <body>
+
+    <?php session_start(); ?>
+
     <div class="container">
         <div class="title_container">
             <h1 class="title">Workout Base</h1>
             <h3>Your training place !</h3>
         </div>
         <main class="main_container">
-            <form class="form_connection">
+            <form action="script/connection.php" method="POST" class="form_connection">
                 <label for="username"></label>
-                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="text" name="username" id="username" placeholder="Username" required>
                 <label for="password"></label>
-                <input type="text" name="password" id="password" placeholder="Password">
-                <button type="button" onclick="window.location.href = './public/dashboard.php'">Connection</button>
+                <input type="text" name="password" id="password" placeholder="Password" required>
+                <button type="submit">Connection</button>
             </form>
+            <?php
+            if(isset($_SESSION['alert_user'])){
+                require_once "./templates/login_alert.php";
+                $_SESSION['alert_user'] = null;
+            }
+            ?>
             <div class="sticker">Besoin d'aide ?</div>
         </main>
         <footer>

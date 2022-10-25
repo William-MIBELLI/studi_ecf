@@ -91,3 +91,21 @@ footer{
     font-weight: bold;
     font-size: smaller;
 }
+.alert_div{
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    color: grey;
+    margin: auto;
+    margin-top: 0;
+    box-shadow: 5px 5px 15px grey;
+    font-family: sans-serif;
+}
+#danger_icon{
+    width: 30px;
+    padding-right: 10px;
+}

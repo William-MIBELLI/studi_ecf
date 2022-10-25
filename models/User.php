@@ -182,4 +182,20 @@ class User
         }
         return $this;
     }
+
+    public function getUserId() : int
+    {
+        return $this->id_user;
+    }
+
+    public function getFullName() : string
+    {
+        return $this->firstname.' '.$this->lastname;
+    }
+
+    public function getPhoneForLink() : string
+    {
+        $temp = substr($this->phone,1);
+        return '33'.$temp;
+    }
 }

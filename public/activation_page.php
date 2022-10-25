@@ -10,8 +10,15 @@
 <body>
     <?php
     include_once "../templates/header.html";
+    spl_autoload_register(function($class) {
+        require_once('../models/'.$class.'.php');
+    });
+    session_start();
+    if($_SESSION['role_id'] !== 1){
+        echo 'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
+        die();
+    }
     ?>
-    <h2>page de désactivation</h2>
     <?php 
     require "../script/activation.php";   
     ?>

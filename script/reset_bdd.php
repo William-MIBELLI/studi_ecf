@@ -1,5 +1,7 @@
 <?php
 
+$pass1 = password_hash('dinasty11', PASSWORD_BCRYPT);
+
 try{
     $pdo = new PDO('mysql:host=localhost;', 'root');
 } catch (PDOException $e){
@@ -14,19 +16,19 @@ $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
 
 $pdo->exec('CREATE TABLE Role (
     id_role INT PRIMARY KEY NOT NULL,
-    name VARCHAR(100)
+    name VARCHAR(100) NOT NULL
 )');
 $res = $pdo->exec('CREATE TABLE User (
     id_user INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    commercial_name VARCHAR(100),
-    firstname VARCHAR(100),
-    lastname VARCHAR(100), 
-    address VARCHAR(255),
-    postal_code VARCHAR(5),
-    city VARCHAR(100),
-    mail VARCHAR(255) UNIQUE,
-    phone VARCHAR(10),
-    password VARCHAR(100),
+    commercial_name VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL, 
+    address VARCHAR(255) NOT NULL,
+    postal_code VARCHAR(5) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    mail VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(10) NOT NULL,
+    password VARCHAR(60) NOT NULL,
     role_id INT NOT NULL,
     is_active TINYINT,
     first_connection TINYINT,
@@ -34,8 +36,8 @@ $res = $pdo->exec('CREATE TABLE User (
 )');
 $pdo->exec('CREATE TABLE permission (
     id_permission INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100),
-    description VARCHAR(255)
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL
 )');
 $pdo->exec('CREATE TABLE partner (
     id_partner INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -80,12 +82,15 @@ $pdo->exec(
     ("Coach fitness", "Un coach fitness vient donner 2 cours par semaine dans votre salle"),
     ("Nettoyage des locaux", "Une société partenaire s\'occupe de l\'entretien de votre salle à un tarif préférentiel")');
 $pdo->exec('INSERT INTO role (id_role, name) VALUES (1,"ROLE_ADMIN"), (2, "ROLE_PARTNER"), (3, "ROLE_STRUCTURE")');
-$pdo->exec('INSERT INTO user 
+$stmt =  $pdo->prepare('INSERT INTO user 
 (id_user, commercial_name, firstname, lastname, address, postal_code, city, mail, phone, password, role_id, is_active, first_connection)
     VALUES 
-    (NULL,"Buckito Corp", "William", "MIBELLI", "42 rue du chateau", "11270", "LA FORCE", "william.mibelli@gmail.com", "0505050505", "monMDP", 1, 1, 1),
-    (NULL,"saucisse industry", "saucisse", "le chat", "42 rue du chateau", "11270", "LA FORCE", "saucisse.gm@gmail.com", "0707070707", "mdpDesEnfersss", 1, 1, 1),
-    (NULL,"Company du Billy", "Nicolas", "MIBELLI", "18 rue Barbès", "11000", "CARCASSONNE", "nicolasmj@gmail.com","0606060606" , "MdpdeMALADE", 2, 1, 1)');
+    (NULL,"Buckito Corp", "William", "MIBELLI", "42 rue du chateau", "11270", "LA FORCE", "william.mibelli@gmail.com", "0505050505", :password, 2, 1, 1),
+    (NULL,"saucisse industry", "saucisse", "le chat", "42 rue du chateau", "11270", "LA FORCE", "saucisse.gm@gmail.com", "0707070707", :password, 2, 1, 1),
+    (NULL,"Company du Billy", "Nicolas", "MIBELLI", "18 rue Barbès", "11000", "CARCASSONNE", "nicolasmj@gmail.com","0606060606" , :password, 2, 1, 1),
+    (NULL, "admin", "admin","admin", "admin", "11111", "admin", "admin@admin.com", "0505050505", :password, 1, 1, 1)');
+    $stmt->bindValue(':password', $pass1, PDO::PARAM_STR);
+    $stmt->execute();
     $pdo->exec('INSERT INTO partner (user_id) VALUES (1)');
     $pdo->exec('INSERT INTO partner (user_id) VALUES (3)');
     $pdo->exec('INSERT INTO partner (user_id) VALUES (2)');

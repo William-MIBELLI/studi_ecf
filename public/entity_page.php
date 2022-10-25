@@ -10,21 +10,35 @@
 <body>
     <?php
     include_once "../templates/header.html";
-    include_once "../models/Partner.php";
     include_once "../script/bdd_functions.php";
+    spl_autoload_register(function($class) {
+        //echo 'on call lautoloader';
+        require_once('../models/'.$class.'.php');
+    });
     session_start();
+    if($_SESSION['role_id'] !== 1){
+        $msg =  'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
+        require_once "../templates/forbidden.php";
+        die();
+    }
     $liste = $_SESSION['entity'];
     $entity = null;
     $entity_permissions_list = [];
     foreach($liste as $item){
         if($item->getUserId() == $_GET['id']){
             $entity = $item;
-            $entity->getPermissionsFromDb();
             $entity_permissions_list = $entity->getPermissionsList();
             $_SESSION['user'] = $entity;
             $_SESSION['entity_permissions_list'] = $entity_permissions_list;
         }
-    }?>
+    }
+    if($entity == null){
+        $msg = 'Des informations sont manquantes pour afficher correctement la page.';
+        require_once "../templates/fail.php";
+        die();
+    }
+    ?>
+
     <div class="main_recup_title">
         <h2>Page de gestion de <?= $entity->getCommercialName()?> Id : <?= $entity->getId(); ?></h2>
     </div>
@@ -32,6 +46,9 @@
         <?php
         include_once "../templates/forms_modif.php";
         $list_permissions = [];
+
+        //////////// SI C'EST UNE STRUCTURE ON RECUPERE LA LISTE DES PERMISSIONS DE SON PARTNER ASSOCIES
+
         if(get_class($entity) == 'Structure'){
             $partner_id = $entity->getPartnerId();
             foreach($liste as $item){

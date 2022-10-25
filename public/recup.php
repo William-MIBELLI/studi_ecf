@@ -10,7 +10,18 @@
 <body>
     <?php
     session_start();
-    include_once "../templates/header.html"; ?>
+    include_once "../templates/header.html"; 
+    include_once "../script/bdd_functions.php";
+    spl_autoload_register(function($class) {
+        //echo 'on call lautoloader';
+        require_once('../models/'.$class.'.php');
+    });
+    if($_SESSION['role_id'] !== 1){
+        $msg = 'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
+        require_once "../templates/forbidden.php";
+        die();
+    }
+    ?>
     <main class="main_recup">
         <div class="main_recup_title">
             <h2>Gestion des partenaires et structures</h2>
@@ -18,24 +29,17 @@
         <?php 
         include_once "../models/Partner.php";
         include_once "../models/Permission.php";
-        echo get_include_path();
+        //echo get_include_path();
         $entity = [];
         $structures = [];
         $permissions = [];
         try{
             $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
             $statement = $pdo->prepare('SELECT * FROM partner JOIN user ON partner.user_id = user.id_user');
-            $stmt_perms = $pdo->prepare('SELECT * FROM permission');
-            if($stmt_perms->execute()){
-                while($temp = $stmt_perms->fetch(PDO::FETCH_ASSOC)){
-                    $permissions[] = new Permission(...$temp);
-                }
-            }
+            $permissions = getAllPermissions($pdo);
             if($statement->execute()){
                 while($user = $statement->fetch(PDO::FETCH_ASSOC)){
                     $partner = new Partner(...$user);
-                    $partner->getPermissionsFromDb();
-                    $partner->getStructureFromDb();
                     $list = $partner->getStructuresList();
                     foreach($list as $structure){
                         $entity[] = $structure;
@@ -53,7 +57,7 @@
 
         ?>
     </main>
-    <!-- <?php include_once "./footer.html" ?> -->
+    <?php include_once "../templates/footer.html" ?>
     <script src="../js/display_entity.js"></script>
  </body>
 </html>

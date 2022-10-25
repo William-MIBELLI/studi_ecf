@@ -17,6 +17,8 @@ class Partner extends User
         $this->id_partner = $id_partner;
         $this->user_id = $user_id;
         parent::__construct($id_user, $commercial_name, $firstname, $lastname, $address, $postal_code, $city, $mail, $phone, $password, $role_id, $is_active, $first_connection);
+        $this->getPermissionsFromDb();
+        $this->getStructureFromDb();
     }
 
     public function getId() : ?int

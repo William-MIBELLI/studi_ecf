@@ -9,9 +9,16 @@
 </head>
 <body>
     <?php
-    include_once "../templates/header.html";
+    spl_autoload_register(function($class) {
+        require_once('../models/'.$class.'.php');
+    });
+    session_start();
+    if($_SESSION['role_id'] !== 1){
+        $msg = 'Vous n\'avez pas les autorisations nécessaires pour accéeder à cette page. </br>';
+        require_once "../templates/forbidden.php";
+        die();
+    }
     ?>
-    <h1>Mise à jour réussie !</h1>
-    <?php require_once "../script/update_entity.php" ?>
+    <?php require_once "./update_confirm_page.php" ?>
 </body>
 </html>

@@ -16,6 +16,7 @@ class Structure extends User
         $this->id_structure = $id_structure;
         $this->partner_id = $partner_id;
         parent::__construct($id_user, $commercial_name, $firstname, $lastname, $address, $postal_code, $city, $mail, $phone, $password, $role_id, $is_active, $first_connection);
+        $this->getPermissionsFromDb();
     }
 
     public function getId() : ?int

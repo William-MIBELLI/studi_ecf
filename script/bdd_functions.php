@@ -35,7 +35,7 @@ function checkData(Array $tab, string &$error, ?int &$role, ?Array &$permissions
                 case 'city':
                     $pattern = '/[a-zA-Z]/';
                     if(!preg_match($pattern,$item)){
-                        $error = ' ne doit contenir que des lettres.';
+                        $error = 'Le prénom, le nom et la ville ne doivent contenir que des lettres.';
                         return false;
                     }
                     break;
@@ -44,7 +44,7 @@ function checkData(Array $tab, string &$error, ?int &$role, ?Array &$permissions
                 case 'commercial_name':  
                     $pattern = '/[a-zA-Z0-9 ]/';
                     if(!preg_match($pattern, $item)){
-                        $error = 'ne doit contenir que des caractères alpha-numériques';
+                        $error = 'L\'adresse et le nom comemrcial ne doivent contenir que des caractères alpha-numériques';
                         return false;
                     }
                     break;
@@ -86,12 +86,12 @@ function checkData(Array $tab, string &$error, ?int &$role, ?Array &$permissions
                     break;
 
                 default:
-                    echo 'default du witch avec la key : '.$key;
+                    //echo 'default du witch avec la key : '.$key;
                     return false;
             }
         }
     }
-    echo 'checkData return TRUE';
+    //echo 'checkData return TRUE';
     return true;
 }
 
@@ -112,11 +112,11 @@ function createtUser(array $tab, $role) : bool
         $pdoStatement->bindValue(':city',$tab['city'], PDO::PARAM_STR);
         $pdoStatement->bindValue(':phone', $tab['phone'], PDO::PARAM_STR);
         $pdoStatement->bindValue(':mail',$tab['mail'], PDO::PARAM_STR);
-        $pdoStatement->bindValue(':password',$tab['password'], PDO::PARAM_STR);
+        $pdoStatement->bindValue(':password',password_hash($tab['password'], PASSWORD_BCRYPT) , PDO::PARAM_STR);
         $pdoStatement->bindValue(':role_id', $role, PDO::PARAM_INT);
         return $pdoStatement->execute();
     } catch(PDOException $e){
-        echo $e->getMessage()."</br>";
+       // echo $e->getMessage()."</br>";
         return false;
     }   
 }
@@ -130,8 +130,8 @@ function createPartner(array $tab, array $permissions) : bool
         $stmt_user_id->bindValue(':mail', $tab['mail']);
         if($stmt_user_id->execute()){
             $user_id = $stmt_user_id->fetch(PDO::FETCH_ASSOC)['id_user'];
-            echo 'récupération de user_id OK : </br>';
-            echo 'user_id : '.$user_id.'</br>';
+           // echo 'récupération de user_id OK : </br>';
+            //echo 'user_id : '.$user_id.'</br>';
 
         }else{
             return false;
@@ -140,17 +140,17 @@ function createPartner(array $tab, array $permissions) : bool
         $stmt = $pdo->prepare($request);
         $stmt->bindValue(':user_id',$user_id,PDO::PARAM_INT);
         if($stmt->execute()){                                     ////////////// SI LA CREATION DE PARTNER EST OK ON CREE GLOBAL
-            echo 'on call getPartnerId et createGlobal , permissions : </br>';
+           // echo 'on call getPartnerId et createGlobal , permissions : </br>';
             print_r($permissions);
             $partner_id = getPartnerId($pdo, $user_id);
             if(createGlobal($permissions, $partner_id)){
-                echo 'Création de la table globale réussie </br>';
+                //echo 'Création de la table globale réussie </br>';
             }
             
         } 
         return true;
     } catch(PDOException $e){
-        echo 'Erreur pendant la création d\'un partenaire :'.$e->getMessage();
+       // echo 'Erreur pendant la création d\'un partenaire :'.$e->getMessage();
     }
 }
 
@@ -173,19 +173,19 @@ function createGlobal(array $permissions, int $partner_id) : bool
             $stmt->bindValue(':permission_id', $perm, PDO::PARAM_INT);
             $stmt->bindValue(':partner_id', $partner_id, PDO::PARAM_INT);
             if(!$stmt->execute()){
-                echo 'ERREUR pendant l\'insertion d\'une permission dans la table globale. </br>';
+                //echo 'ERREUR pendant l\'insertion d\'une permission dans la table globale. </br>';
                 return false;
             }
         }
     } catch (PDOException $e) {
-        echo 'Erreur pendant la création de global : '.$e->getMessage();
+        //echo 'Erreur pendant la création de global : '.$e->getMessage();
     }
     return true;
 }
 
 function createStructure(int $partner_id, string $mail) : bool
 {
-    echo 'createStructure, partner_id : '.$partner_id.'</br>';
+    //echo 'createStructure, partner_id : '.$partner_id.'</br>';
     $user_id = null;
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
@@ -201,11 +201,11 @@ function createStructure(int $partner_id, string $mail) : bool
         if($stmt->execute()){
             $last_index = $pdo->lastInsertId();
             createLocale($last_index, $partner_id);
-            echo 'last index : '.$last_index.' </br>';
+            //echo 'last index : '.$last_index.' </br>';
         }
 
     } catch (PDOException $e){
-        echo 'Erreur pendant la création de strucure : '.$e->getMessage();
+       // echo 'Erreur pendant la création de strucure : '.$e->getMessage();
     }
     return true;
 }
@@ -226,11 +226,11 @@ function createLocale(int $structure_id, int $partner_id) : bool
                 $stmt_insert->bindValue(':structure_id', $structure_id, PDO::PARAM_INT);
                 $stmt_insert->bindValue(':is_active', $res['is_active_global'], PDO::PARAM_INT);
                 $stmt_insert->execute();
-                echo 'Insertion dans locale réussie ! </br>';
+               // echo 'Insertion dans locale réussie ! </br>';
             }
         }
     } catch(PDOException $e){
-        echo 'Erreur pendant la création de locale : '.$e->getMessage();
+        //echo 'Erreur pendant la création de locale : '.$e->getMessage();
     }
     return true;
 }
@@ -251,7 +251,7 @@ function addGlobal(int $perm_id, int $partner_id, PDO $pdo) : bool
     $stmt_loc->bindValue(':partner_id', $partner_id, PDO::PARAM_INT);
     if($stmt_loc->execute()){
         while($temp = $stmt_loc->fetch(PDO::FETCH_ASSOC)){
-            echo 'lastinsert : '.$last.' </br>';
+            //echo 'lastinsert : '.$last.' </br>';
             addLocalFromGlobal($last, $temp['id_structure'], $pdo);
         }
     }
@@ -277,7 +277,7 @@ function addLocalFromGlobal(int $global_id, int $structure_id, PDO $pdo) : bool
     $stmt->bindValue(':global_id', $global_id, PDO::PARAM_INT);
     $stmt->bindValue(':structure_id', $structure_id, PDO::PARAM_INT);
 
-    echo 'Ajout de la permission pour la structure : '.$structure_id.' </br>';
+    //echo 'Ajout de la permission pour la structure : '.$structure_id.' </br>';
 
     return $stmt->execute();
 }
@@ -293,7 +293,7 @@ function deleteLocale(int $perm_id, int $structure_id, int $partner_id, PDO $pdo
     $stmt_global->bindValue(':partner_id', $partner_id, PDO::PARAM_INT);
     if($stmt_global->execute()){
         $global_id = $stmt_global->fetch(PDO::FETCH_ASSOC)['id_global'];
-        echo 'global_id recupéré : '.$global_id.' </br>';
+        //echo 'global_id recupéré : '.$global_id.' </br>';
     }
     $stmt_delete = $pdo->prepare('DELETE FROM local 
                                     WHERE 
@@ -343,4 +343,84 @@ function deleteUser(int $user_id, PDO $pdo) : bool
     $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
     return $stmt->execute();
+}
+
+function checkRole(int $required, int $role) : bool
+{
+    return $role === $required;
+}
+
+function updatePassword(string $username, string $password) : bool
+{
+    $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+    $stmt = $pdo->prepare('UPDATE user SET user.password = :password, user.first_connection = 0 WHERE user.mail = :username');
+    $stmt->bindValue(':password', password_hash($password, PASSWORD_BCRYPT), PDO::PARAM_STR);
+    $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+
+    return $stmt->execute();
+}
+
+function getAllPartners(PDO $pdo) : array
+{
+    $tab = [];
+    $statement = $pdo->prepare('SELECT * FROM partner JOIN user ON partner.user_id = user.id_user');
+    if($statement->execute()){
+        while($user = $statement->fetch(PDO::FETCH_ASSOC)){
+            $partner = new Partner(...$user);
+            $list = $partner->getStructuresList();
+            foreach($list as $structure){
+                $tab[] = $structure;
+            }
+            $tab[] = $partner;
+        }
+    }
+
+    return $tab;
+}
+
+function getAllPermissions(PDO $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root')) : array
+{
+    $tab = [];
+    $stmt_perms = $pdo->prepare('SELECT * FROM permission');
+    if($stmt_perms->execute()){
+        while($temp = $stmt_perms->fetch(PDO::FETCH_ASSOC)){
+            $tab[] = new Permission(...$temp);
+        }
+    }
+
+    return $tab;
+}
+
+function getPartner(int $user_id) : Partner
+{
+    $partner = null;
+    $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+    $stmt = $pdo->prepare('SELECT * FROM partner  
+                            JOIN user ON user.id_user = :id 
+                            WHERE partner.user_id = :id');
+    $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        $temp = $stmt->fetch(PDO::FETCH_ASSOC);
+        $partner = new Partner(...$temp);
+    }
+
+    return $partner;
+}
+
+function getStructure(int $user_id) : Structure
+{
+    $structure = null;
+    $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+    $stmt = $pdo->prepare('SELECT * FROM structure  
+                            JOIN user ON user.id_user = :id 
+                            WHERE structure.user_id = :id');
+    $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        $temp = $stmt->fetch(PDO::FETCH_ASSOC);
+        $structure = new Structure(...$temp);
+    }
+
+    return $structure;
 }
