@@ -105,6 +105,10 @@ main{
     align-items: center;
     justify-content: center;
 }
+.span_request{
+    font-weight: bold;
+    color: red;
+}
 .card-footer a{
     color: white;
     font-weight: lighter;
@@ -314,28 +318,36 @@ form label{
 
 /* ////////////////////////////////  GESTION DES DROITS     ////////////////////// */
 
-.partner_container{
+.partner_container,
+.partner_container_inactive{
     display: flex;
     flex-direction: column;
     color:grey;
+    font-size: 0.8rem;
     border-radius: 10px;
     box-shadow: 10px 10px 15px grey;
-    width: 70%;
+    width: 60%;
     margin: auto;
     margin-top: 30px;
+    background-color: #f1f2f6;
 }
 .partner_header{
     text-align: center;
     color: black;
 }
-.partner_container h2{
+.partner_container h2,
+.partner_container_inactive h2{
     margin: 10px 0;
     color: #FFC900;
     font-family: 'Permanent Marker', cursive;
 }
-.partner_container h3{
+.partner_container h3,
+.partner_container_inactive h3{
     color: black;
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+.visibility_choice{
+    float: right;
 }
 .partner_content{
     display: flex;
@@ -372,11 +384,10 @@ form label{
     grid-template-columns: 1fr;
 }
 .main_recup_title{
-    width: 100%;
+    width: 60%;
     margin: 0 auto;
 }
 .main_recup_title h2{
-    padding-left: 15%;
     font-size: 1.4rem;
     font-weight: 100;
     color: #141E27;
@@ -404,7 +415,7 @@ form label{
     border-right: 1px solid #141E27;
 }
 .partner_permissions_list p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 .permissions_detail{
     display: flex;
@@ -412,7 +423,6 @@ form label{
     align-items: center;
     text-align: left;
     padding-left: 10%;
-    border: 1px solid white;
     color: black;
     margin: 3px 0;
 }

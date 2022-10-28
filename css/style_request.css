@@ -1,0 +1,49 @@
+#request_container{
+    flex-direction: column;
+}
+#request_form{
+    display: flex;
+    flex-direction: column;
+}
+#content_request{
+    resize: none;
+    margin-bottom: 20px;
+}
+#request_form button{
+    padding: 5px;
+}
+.request_container_details{
+    display : grid;
+    grid-template-columns: 20% 1fr 20%;
+    border-top: 1px solid black;
+    margin-top: 30px;
+    padding-top: 5px;
+    width: 60%;
+    justify-items: center;
+}
+.main_container_request{
+    flex-direction: column;
+}
+.request_creator{
+    font-weight: bold;
+}
+.btn_request{
+    padding: 5px;
+    border: none;
+    box-shadow: 5px 5px 10px grey;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+.btn_request:hover{
+    transform: scale(1.05);
+    transition: all 0.2s ease-out;
+}
+
+.btn_request_accept{
+    background-color: greenyellow;
+}
+.btn_request_decline{
+    background-color: #ff4757;
+    color: white;
+}

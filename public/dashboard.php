@@ -17,11 +17,12 @@
         require_once('../models/'.$class.'.php');
     });
     session_start();
-    include '../templates/header.html';
+    include '../templates/header.php';
     include '../script/bdd_functions.php';
     $role = $_SESSION['role_id'];
     switch($role){
         case 1:
+            $demandes = getRequests();
             require_once "../templates/dashboard_admin.php";
             break;
         case 2:

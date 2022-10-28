@@ -9,13 +9,13 @@
 </head>
 <body>
     <?php
-    include_once "../templates/header.html";
     include_once "../script/bdd_functions.php";
     spl_autoload_register(function($class) {
         //echo 'on call lautoloader';
         require_once('../models/'.$class.'.php');
     });
     session_start();
+    include_once "../templates/header.php";
     if($_SESSION['role_id'] !== 1){
         $msg =  'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
         require_once "../templates/forbidden.php";
@@ -44,6 +44,7 @@
     </div>
     <form action="/public/update_entity_page.php" method="POST" class="form_update">
         <?php
+        $update = true;
         include_once "../templates/forms_modif.php";
         $list_permissions = [];
 

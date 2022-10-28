@@ -1,5 +1,13 @@
 <?php include_once "../models/Partner.php";?>
-<div class="partner_container">
+<div 
+    <?php
+    if($partner->getIsActive()){
+        echo 'class="partner_container"';
+    }else{
+        echo 'class="partner_container_inactive"';
+    }
+    ?>
+    >
     <div class="display_partner">
         <div class="partner_logo">
             <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="">

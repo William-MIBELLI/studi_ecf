@@ -10,7 +10,7 @@
 <body>
     <?php
     session_start();
-    include_once "../templates/header.html"; 
+    include_once "../templates/header.php"; 
     include_once "../script/bdd_functions.php";
     spl_autoload_register(function($class) {
         //echo 'on call lautoloader';
@@ -25,6 +25,14 @@
     <main class="main_recup">
         <div class="main_recup_title">
             <h2>Gestion des partenaires et structures</h2>
+            <div class="visibility_choice">
+                <label for="display_choice">Affichage</label>
+                <select name="display_choise" id="display_select">
+                    <option value="all">Afficher tout</option>
+                    <option value="active">Actif</option>
+                    <option value="inactive">Désactivé</option>
+                </select>
+            </div>
         </div>
         <?php 
         include_once "../models/Partner.php";
@@ -53,9 +61,28 @@
             echo $e->getMessage();
         }
         $_SESSION['entity'] = $entity;
+        // $entity_encoded = json_encode($entity);
+        // echo $entity_encoded;
+        // echo '</br>';
+        // print_r($entity);
+        foreach($entity as $item){
+            $temp = json_encode((object)$item);
+            if($temp){
+                echo '<pre>';
+                print_r($item);
+                echo '</pre>';
+                print_r($temp);
+            }
+        }
         $_SESSION['permissions'] = $permissions;
 
         ?>
+        <script>
+            let array = <?php echo json_encode($entity) ?>;
+            for(const item of array){
+                console.log(item);
+            }
+        </script>
     </main>
     <?php include_once "../templates/footer.html" ?>
     <script src="../js/display_entity.js"></script>

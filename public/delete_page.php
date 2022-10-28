@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-    include_once "../templates/header.html";
+    include_once "../templates/header.php";
     spl_autoload_register(function($class) {
         //echo 'on call lautoloader';
         require_once('../models/'.$class.'.php');

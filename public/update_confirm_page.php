@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-    require_once "../templates/header.html";
+    require_once "../templates/header.php";
     require_once "../script/update_entity.php";
     ?>
 </body>

@@ -67,6 +67,12 @@ $pdo->exec('CREATE TABLE local (
     FOREIGN KEY (global_id) REFERENCES global(id_global) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (structure_id) REFERENCES structure (id_structure) ON DELETE CASCADE ON UPDATE CASCADE
 )');
+$pdo->exec('CREATE TABLE request (
+    id_request INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id_user) ON DELETE CASCADE
+)');
 $pdo->exec(
     'INSERT INTO permission 
     (name, description) 

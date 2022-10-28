@@ -209,7 +209,6 @@ function createStructure(int $partner_id, string $mail) : bool
     }
     return true;
 }
-
 function createLocale(int $structure_id, int $partner_id) : bool
 {
     try{
@@ -360,7 +359,7 @@ function updatePassword(string $username, string $password) : bool
     return $stmt->execute();
 }
 
-function getAllPartners(PDO $pdo) : array
+function getAllPartners(PDO $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root')) : array
 {
     $tab = [];
     $statement = $pdo->prepare('SELECT * FROM partner JOIN user ON partner.user_id = user.id_user');
@@ -376,6 +375,25 @@ function getAllPartners(PDO $pdo) : array
     }
 
     return $tab;
+}
+
+function getEntityAsJson(PDO $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root')){
+
+    $tab = [];
+    $statement = $pdo->prepare('SELECT * FROM partner JOIN user ON partner.user_id = user.id_user');
+    if($statement->execute()){
+        while($user = $statement->fetch(PDO::FETCH_ASSOC)){
+            $partner = new Partner(...$user);
+            $list = $partner->getStructuresList();
+            foreach($list as $structure){
+                $tab[] = $structure;
+            }
+            $tab[] = $partner;
+        }
+    }
+    $encoded = json_encode($tab);
+    
+    return $encoded;
 }
 
 function getAllPermissions(PDO $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root')) : array
@@ -423,4 +441,74 @@ function getStructure(int $user_id) : Structure
     }
 
     return $structure;
+}
+function getPartnersForForms(PDO $pdo) : array
+{
+    $temp = [];
+    $stmt = $pdo->prepare('SELECT commercial_name, id_partner, is_active  FROM user 
+    JOIN partner ON partner.user_id = user.id_user');
+    if($stmt->execute()){
+        while($res = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $temp[] = $res;
+        }
+    }
+
+    return $temp;
+}
+
+function createRequest(int $user_id, string $content) : bool
+{
+    try{
+        $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+        $stmt = $pdo->prepare('INSERT INTO request (user_id, content) VALUES (:user_id, :content)');
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':content', $content, PDO::PARAM_STR);
+
+        return $stmt->execute();
+
+    } catch (PDOException $e){
+
+        return false;
+    }
+}
+
+function getRequests() : array
+{
+    $temp = [];
+    
+    try{
+        $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+        $stmt = $pdo->prepare('SELECT commercial_name, mail, content, request.id_request FROM request JOIN user ON request.user_id = user.id_user');
+        if($stmt->execute()){
+            while($res = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $temp[] = $res;
+            }
+        }
+
+        return $temp;
+
+    } catch (PDOException $e){
+
+        echo 'Erreur pendant la recupération des requests : '.$e->getMessage();
+        return $temp;
+    }
+}
+
+function deleteRequest(int $request_id, PDO $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root')) : bool
+{
+    $stmt = $pdo->prepare('DELETE FROM request WHERE request.id_request = :id');
+    $stmt->bindValue(':id', $request_id, PDO::PARAM_INT);
+
+    return $stmt->execute();
+}
+
+function sendMail(string $statut, string $address) : void
+{
+    $msg = null;
+    if($statut == 'true'){
+        $msg = 'Votre demande a été acceptée, les modifications seront appliquées dans les meilleurs délais';
+    }else{
+        $msg = 'Votre demande a été rejetée, n\'hésitez pas à prendre contact avec nos équipes afin de trouver une solution rapidement';
+    }
+    mail($address, 'Statut de votre demande WorkOUT', $msg);
 }

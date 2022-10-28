@@ -9,7 +9,9 @@
 </head>
 <body>
         <?php
-        include "../templates/header.html";
+        session_start();
+        include "../templates/header.php";
+        require_once "../script/bdd_functions.php";
         spl_autoload_register(function($class) {
             //echo 'on call lautoloader';
             require_once('../models/'.$class.'.php');
@@ -17,8 +19,8 @@
     
         ?>
     <main class="creation_main">
+        <h1>Création d'un nouvel utilisateur</h1>
         <?php 
-        session_start();
         if($_SESSION['role_id'] !== 1){
             require_once "../templates/forbidden.php";
             die();
@@ -32,31 +34,11 @@
             }
             if($pdo){
                 try{
-                    $stmt = $pdo->prepare('SELECT commercial_name, id_partner  FROM user 
-                    JOIN partner ON partner.user_id = user.id_user');
-                     if($stmt->execute()){
-                        while($res = $stmt->fetch(PDO::FETCH_ASSOC)){
-                            $list_partner[] = $res;
-                        }
-                     }
-                     $stmt2 = $pdo->prepare('SELECT * FROM permission');
-                     if($stmt2->execute()){
-                        while($res = $stmt2->fetch(PDO::FETCH_ASSOC)){
-                            $perm = new Permission(...$res);
-                            $list_permissions[] = $perm;
-                        }
-                     }
-                    
-                    }catch(PDOException $e){
-                        var_dump($e->getMessage());
-                    }
-                    if(!$res || $res != 0){
-                        $structure = $pdo->query('SELECT * FROM user WHERE id_user = 2', PDO::FETCH_ASSOC)->fetch();
-                        if(count($_POST) != 0){
-                            foreach($_POST as $key => $item){
-                                echo $key.' : '.$item.PHP_EOL; 
-                            }
-                        }
+                    $list_partner = getPartnersForForms($pdo);
+                    $list_permissions = getAllPermissions($pdo);
+                  
+                }catch(PDOException $e){
+                    var_dump($e->getMessage());
                 }
             }
         ?>
@@ -75,7 +57,11 @@
                     <option value="null"></option>
                     <?php
                     foreach($list_partner as $partner){
-                        echo '<option value ="'.strval($partner['id_partner']).'">'.$partner['commercial_name'].'</option>';
+                        if($partner['is_active'] == 1){
+                            echo '<option value ="'.strval($partner['id_partner']).'">'.$partner['commercial_name'].'</option>';
+                        }else{
+                            echo '<option value ="'.strval($partner['id_partner']).'" disabled>'.$partner['commercial_name'].'</option>';
+                        }
                     }
                     ?>
                 </select>

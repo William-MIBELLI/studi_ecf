@@ -34,9 +34,14 @@ if(isset($entity)){
     <legend>Informations de connection</legend>
     <label for="mail">Mail</label>
     <input type="email" name="mail" value="<?= $tab['mail']?>">
-    <label for="password">Mot de passe</label>
-    <input type="text" name="password">
-    <label for="confirm_password">Confirmation du mot de passe</label>
-    <input type="password" name="confirm_password" >
+    <?php
+    if(!isset($update) || !$update){
+        ?>
+        <label for="password">Mot de passe</label>
+        <input type="text" name="password">
+        <label for="confirm_password">Confirmation du mot de passe</label>
+        <input type="password" name="confirm_password" >
+        <?php
+    }?>
 </fieldset>
 

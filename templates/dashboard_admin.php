@@ -34,11 +34,11 @@
                     <h3>Demandes en attente</h3>
                 </div>
                 <div class="card-body">
-                    <p>Ici seront regroupées les demandes en attentes des partenaire vis à vis des droits</p>
+                    <p>Ici seront regroupées les demandes en attentes des partenaire vis à vis des droits. </br><span class="span_request">Actuellement en attente : <?= count($demandes) ?></span></p>
                     <img src="../ressources/icones/airplane.png" alt="" class="icon-card" id="demand-icon">
                 </div>
                 <div class="card-footer">
-                    <p>Accéder</p>
+                    <p><a href="/public/demande_page.php">Accéder</a></p>
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div>   
             </div>

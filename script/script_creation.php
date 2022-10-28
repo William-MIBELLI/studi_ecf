@@ -13,11 +13,10 @@ if(!checkData($resultat, $error, $role, $permissions)){
     $msg = $error;
     require_once "../templates/fail.php";
 }else{
-    //echo 'On peut traiter la création dans la BDD'."</br>";
-   // echo 'liste des permission : </br>';
     print_r($list_permissions);
+    // $statut = checkStatut($resultat);
+    // $resultat['statut'] = $statut;
     if(createtUser($resultat, $role)){
-       // echo 'création d\'User réussie.</br>';
         if($resultat['type'] == 'partner'){                 ////////////// CREATION DE PARTNER ET GLOBAL
             if(createPartner($resultat, $permissions)){
                 $msg = 'Création du partenaire réussi </br>';
@@ -33,6 +32,16 @@ if(!checkData($resultat, $error, $role, $permissions)){
         require_once "../templates/fail.php";
     }
 }
+
+// function checkStatut(array $tab) : int
+// {
+//     if($tab['type'] != 'structure'){
+
+//         return 1;
+//     }
+//     $temp = getAllPartners();
+//     foreach($temp as )
+// }
 
 
 
