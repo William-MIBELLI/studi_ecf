@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['role_id'] = null;
 include "../models/User.php";
+include "../script/bdd_functions.php";
 
 if(!isset($_POST) || count($_POST) == 0){
     echo 'Une erreur s\'est produite.';
@@ -13,7 +14,7 @@ $password = $_POST['password'];
 $user = null;
 
 try{
-    $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+    $pdo = getPdo();
     $stmt = $pdo->prepare('SELECT * FROM user WHERE user.mail = :username');
     $stmt->bindValue(':username', $username, PDO::PARAM_STR);
     if($stmt->execute()){

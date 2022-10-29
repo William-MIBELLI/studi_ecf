@@ -33,11 +33,12 @@
                 $_SESSION['alert_user'] = null;
             }
             ?>
-            <div class="sticker">Besoin d'aide ?</div>
+            <div class="sticker" id="sticker_login">Configuration</div>
         </main>
         <footer>
             <p>Buckito Corp 2022</p>
         </footer>
     </div>
+    <script src="/js/main.js"></script>
 </body>
 </html>

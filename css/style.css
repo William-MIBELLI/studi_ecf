@@ -74,11 +74,11 @@ button{
 .sticker{
     background-color: #EE5007;
     writing-mode: vertical-lr;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     padding: 5px;
     font-family: sans-serif;
     color: white;
-    font-weight: 100;
+    font-weight: bold;
     font-size: 1em;
     cursor: pointer;
     border-radius: 10px 0 0 10px;

@@ -18,7 +18,7 @@
     });
     session_start();
     include '../templates/header.php';
-    include '../script/bdd_functions.php';
+    include_once '../script/bdd_functions.php';
     $role = $_SESSION['role_id'];
     switch($role){
         case 1:

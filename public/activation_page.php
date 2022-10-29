@@ -9,11 +9,11 @@
 </head>
 <body>
     <?php
-    include_once "../templates/header.php";
     spl_autoload_register(function($class) {
         require_once('../models/'.$class.'.php');
     });
     session_start();
+    include_once "../templates/header.php";
     if($_SESSION['role_id'] !== 1){
         echo 'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
         die();

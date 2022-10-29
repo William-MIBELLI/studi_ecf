@@ -14,7 +14,8 @@ if(isset($_POST) && count($_POST) != 0){
         if($entity == null){
             throw new PDOException('Aucun utilisateur renseigné');
         }
-        $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+        $pdo = getPdo();
+        
         $stmt = $pdo->prepare('UPDATE user SET
         commercial_name = :cm,
         firstname = :fn,
@@ -48,7 +49,7 @@ if(isset($_POST) && count($_POST) != 0){
                 if(get_class($entity) == 'Partner'){
                     deleteGlobal($perm_entity->getId(),$entity->getId(), $pdo); 
                 }else if (get_class($entity) == 'Structure'){
-                    deleteLocale($perm_entity->getId(), $entity->getId(), $entity->getPartnerId(), $pdo);
+                    deleteLocale($perm_entity->getId(), $entity->getId(), $entity->getPartnerId());
                 }
             }
         }
@@ -65,9 +66,9 @@ if(isset($_POST) && count($_POST) != 0){
             if($add){
                 //echo 'le permission N°'.$perm_post_id.' doit être ajoutée </br>';
                 if(get_class($entity) == 'Partner'){
-                    addGlobal($perm_post_id, $entity->getId(), $pdo);
+                    addGlobal($perm_post_id, $entity->getId());
                 }else if (get_class($entity) == 'Structure'){
-                    addLocal($perm_post_id, $entity->getId(), $entity->getPartnerId(), $pdo);
+                    addLocal($perm_post_id, $entity->getId(), $entity->getPartnerId());
                 }
             }
         }

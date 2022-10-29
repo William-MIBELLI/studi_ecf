@@ -42,9 +42,9 @@
         $structures = [];
         $permissions = [];
         try{
-            $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+            $pdo = getPdo();
             $statement = $pdo->prepare('SELECT * FROM partner JOIN user ON partner.user_id = user.id_user');
-            $permissions = getAllPermissions($pdo);
+            $permissions = getAllPermissions();
             if($statement->execute()){
                 while($user = $statement->fetch(PDO::FETCH_ASSOC)){
                     $partner = new Partner(...$user);

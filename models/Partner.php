@@ -3,6 +3,7 @@
 include_once 'User.php';
 include_once 'Permission.php';
 include_once 'Structure.php';
+include_once '../script/bdd_functions.php';
 
 class Partner extends User
 {
@@ -27,22 +28,21 @@ class Partner extends User
     }
     public function getPermissionsFromDb() : void
     {
-        try{
-            $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
-            $stmt_perms = $pdo->prepare('
-            SELECT id_permission, name, description FROM permission 
-            JOIN global ON global.permission_id = permission.id_permission
-            WHERE partner_id = :id');
-            $stmt_perms->bindValue(':id', $this->getId(), PDO::PARAM_INT);
-            if($stmt_perms->execute()){
-                $this->permissionsList = [];
-                while($temp = $stmt_perms->fetch(PDO::FETCH_ASSOC)){
-                    $perm = new Permission(...$temp);
-                    $this->permissionsList[] = $perm;
-                }
+
+        $pdo = getPdo();
+
+        $stmt_perms = $pdo->prepare('SELECT id_permission, name, description 
+                                    FROM permission 
+                                    JOIN global ON global.permission_id = permission.id_permission
+                                    WHERE partner_id = :id');
+
+        $stmt_perms->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        if($stmt_perms->execute()){
+            $this->permissionsList = [];
+            while($temp = $stmt_perms->fetch(PDO::FETCH_ASSOC)){
+                $perm = new Permission(...$temp);
+                $this->permissionsList[] = $perm;
             }
-        } catch (PDOException $e){
-            echo 'Erreur pendant la récupération des permission de '.$this->getFirstName().' : '.$e->getMessage();
         }
     }
 
@@ -53,18 +53,18 @@ class Partner extends User
 
     public function getStructureFromDb() : void
     {
-        try{
-            $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
-            $stmt = $pdo->prepare('SELECT * FROM structure JOIN user ON user.id_user = structure.user_id WHERE structure.partner_id = :id');
-            $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
-            if($stmt->execute()){
-                while($temp = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    $structure = new Structure(...$temp);
-                    $this->structuresList[] = $structure;
-                }
+        $pdo = getPdo();
+
+        $stmt = $pdo->prepare('SELECT * FROM structure
+                                JOIN user ON user.id_user = structure.user_id 
+                                WHERE structure.partner_id = :id');
+        $stmt->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            while($temp = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $structure = new Structure(...$temp);
+                $this->structuresList[] = $structure;
             }
-        } catch (PDOException $e) {
-            echo 'Erreur pendant la récupération des structure liées au partenaire : '.$this->getFirstName().' '.$e->getMessage();
         }
     }
 

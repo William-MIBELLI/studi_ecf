@@ -3,6 +3,7 @@
 
 include_once './models/User.php';
 include_once './models/Partner.php';
+include_once "../script/bdd_functions.php";
 
 class Structure extends User
 {
@@ -36,7 +37,8 @@ class Structure extends User
     public function getPermissionsFromDb() : void
     {
         try{
-            $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+            $pdo = getPdo();
+
             $stmt_perms = $pdo->prepare('SELECT id_permission, name, description FROM permission 
                                         JOIN global ON global.permission_id = permission.id_permission 
                                         JOIN local ON local.global_id = global.id_global 
@@ -62,7 +64,8 @@ class Structure extends User
     public function getPartnerPermissionsFromDb() : void
     {
         try{
-            $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+            $pdo = getPdo();
+            
             $stmt = $pdo->prepare('');
         } catch (PDOException $e){
             echo 'Erreur pendant la récupération des permissions du partenaire parent '.$e->getMessage().'</br>';

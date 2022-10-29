@@ -33,6 +33,8 @@ function displayDiv(radios){
     }
 }
 
-fetch('http://localhost:8000/script/bdd_functions.php')
-    .then(response => console.log(response))
-    .catch(error => console.log('ERREUR : ' + error));
+let login_sticker = document.querySelector('#sticker_login');
+
+login_sticker.addEventListener('click', (e) => {
+    alert('click sur le sticker OK');
+});

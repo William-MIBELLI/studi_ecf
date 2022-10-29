@@ -25,22 +25,9 @@
             require_once "../templates/forbidden.php";
             die();
         }
-            $list_partner = [];
-            $list_permissions = [];
-            try{        
-                $pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
-            }catch(PDOException $e){
-                var_dump($e->getMessage());
-            }
-            if($pdo){
-                try{
-                    $list_partner = getPartnersForForms($pdo);
-                    $list_permissions = getAllPermissions($pdo);
-                  
-                }catch(PDOException $e){
-                    var_dump($e->getMessage());
-                }
-            }
+        $list_partner = getPartnersForForms();
+        $list_permissions = getAllPermissions();
+
         ?>
         <form action="../public/creation_confirm_page.php" method="POST" class="form-creation">
             <fieldset>

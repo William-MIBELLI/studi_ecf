@@ -9,12 +9,12 @@
 </head>
 <body>
     <?php
-    include_once "../templates/header.php";
     spl_autoload_register(function($class) {
         //echo 'on call lautoloader';
         require_once('../models/'.$class.'.php');
     });
     session_start();
+    include_once "../templates/header.php";
     if($_SESSION['role_id'] !== 1){
         $msg =  'Vous n\'avez pas les autorisation nécessaires pour accéder à cette page';
         require_once "../templates/forbidden.php";

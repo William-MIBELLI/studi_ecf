@@ -1,4 +1,5 @@
 <?php
+include_once "../script/bdd_functions.php";
 
 $pass1 = password_hash('dinasty11', PASSWORD_BCRYPT);
 
@@ -11,7 +12,7 @@ try{
 $pdo->exec('DROP DATABASE IF EXISTS ecf_database');
 $pdo->exec('CREATE DATABASE ecf_database');
 $pdo = null;
-$pdo = new PDO('mysql:host=localhost;dbname=ecf_database', 'root');
+$pdo = getPdo();
 
 
 $pdo->exec('CREATE TABLE Role (
