@@ -26,6 +26,6 @@
         }
         ?>
     </main>
-    <?php require_once "../templates/footer.html" ?>
+    <?php require_once "../templates/footer.php" ?>
 </body>
 </html>

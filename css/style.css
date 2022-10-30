@@ -45,7 +45,7 @@ h3{
     width: 20%;
 }
 
-input, button{
+.input_connection, #connection_btn{
     text-align: center;
     height: 40px; 
     max-width: 400px;
@@ -61,7 +61,7 @@ input{
 #password{
     border-radius: 0 0 10px 10px;
 }
-button{
+#connection_btn{
     border-radius: 10px;
     margin-top: 8%;
     border: 0;  
@@ -73,7 +73,6 @@ button{
 }
 .sticker{
     background-color: #EE5007;
-    writing-mode: vertical-lr;
     letter-spacing: 1px;
     padding: 5px;
     font-family: sans-serif;
@@ -83,6 +82,42 @@ button{
     cursor: pointer;
     border-radius: 10px 0 0 10px;
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    transition: all 0.2s ease-out;
+    height: 100%;
+    text-align: center;
+}
+.sticker p{
+    writing-mode: vertical-lr;
+}
+#config_form{
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 100;
+    font-size: 0.8rem;
+    transition: all 0.2s ease-out;
+}
+#config_form h4{
+    color: black;
+    margin-bottom: 10px;
+}
+.config_radio_container{
+    display: grid;
+    grid-template-columns: 1fr 10px;
+    justify-items: center;
+    align-items: center;
+    gap: 10px 0;
+}
+#config_btn{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 7px;
 }
 footer{
     color: #FFC900;
@@ -90,6 +125,17 @@ footer{
     margin-bottom: 5px;
     font-weight: bold;
     font-size: smaller;
+}
+.footer_mode_display{
+    float: right;
+    color: white;
+    font-size: 1rem;
+    margin-right: 20px;
+}
+footer strong{
+    color: yellowgreen;
+    font-weight: bold;
+    font-style: italic;
 }
 .alert_div{
     padding: 20px;
@@ -108,4 +154,91 @@ footer{
 #danger_icon{
     width: 30px;
     padding-right: 10px;
+}
+
+@media screen and (max-width : 1150px){
+   .form_connection{
+    width: 40%;
+   }
+   .alert_div{
+    width: 30%;
+    margin-left: auto;
+   }
+}
+@media screen and (max-width : 900px) and (min-width : 601px){
+    .title{
+        font-size: 4rem;
+    }
+    .main_container{
+        margin: auto 0;
+        justify-content: center;
+    }
+    .form_connection{
+        width: 350px;
+        margin-left: auto;
+        transform: translateX(30px);
+    }
+    .sticker{
+        margin-left: auto;
+    }
+    .alert_div{
+        flex-direction: column;
+        width: 20%;
+    }
+    footer{
+        text-align: center;
+    }
+    .footer_mode_display{
+        float: none;
+        margin: auto;
+    }   
+    .alert_div{
+        position: absolute;
+        top: 20%;
+        margin: auto;
+        width: 60%;
+    }
+}
+@media screen and (max-width : 600px){
+    .title_container{
+        padding-left: 0;
+        text-align: center;
+    }
+    footer{
+        text-align: center;
+    }
+    .footer_mode_display{
+        float: none;
+        margin: auto;
+    }
+    .main_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .form_connection{
+        margin: auto;
+        width: 80%;
+    }
+    .input_connection, #connection_btn{
+        max-width: 100%;
+    }
+
+    .sticker{
+        margin: auto;
+        width: auto;
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 10px;
+    }
+    .sticker p{
+        writing-mode: horizontal-tb;
+    }
+    .alert_div{
+        margin-top: 20px;
+    }
+    .title_container{
+        line-height: 5rem;
+        margin-bottom: 20px;
+    }
 }

@@ -2,11 +2,21 @@
 
 function getPdo() : ?PDO
 {
-    $uri = 'postgres://acqszzbrvrforl:444e1a7670f643dc604a68d9c855b85868db5e5ceaadb319ed2623f6e3f73c52@ec2-54-76-43-89.eu-west-1.compute.amazonaws.com:5432/d207dehbj3s096';
-    $user = 'acqszzbrvrforl';
-    $pass = '444e1a7670f643dc604a68d9c855b85868db5e5ceaadb319ed2623f6e3f73c52';
+    $uri_online = 'postgres://acqszzbrvrforl:444e1a7670f643dc604a68d9c855b85868db5e5ceaadb319ed2623f6e3f73c52@ec2-54-76-43-89.eu-west-1.compute.amazonaws.com:5432/d207dehbj3s096';
+    $user_online = 'acqszzbrvrforl';
+    $pass_online = '444e1a7670f643dc604a68d9c855b85868db5e5ceaadb319ed2623f6e3f73c52';
+
+    $uri_locale = 'mysql:host_localhost;port=8000;dbname=ecf_database';
+    $user_locale = 'root';
     try{
-        $pdo = new PDO('mysql:host_localhost;port=8000;dbname=ecf_database', 'root');
+
+        $pdo = null;
+
+        if($_SESSION['mode'] == 'online'){
+            $pdo = new PDO($uri_online, $user_online, $pass_online);
+        }else{
+            $pdo = new PDO($uri_locale, $user_locale);
+        }
 
         return $pdo;
 

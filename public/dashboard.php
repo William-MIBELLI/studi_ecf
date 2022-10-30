@@ -36,7 +36,7 @@
             return null;
     }
     ?>  
-    <?php include '../templates/footer.html'?>
+    <?php include '../templates/footer.php'?>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,14 +1,16 @@
 <main>
         <div class="container">
+
             <div class="title">
                 Bienvenue sur l'espace d'administration 
             </div>
+
             <div class="card">
                 <div class="card-header">
-                    <h3>Création d'un partenaire</h3>
+                    <h3>Création d'un adhérent</h3>
                 </div>
                 <div class="card-body">
-                    <p>Une petite description de l'utilité de ce module, manière de remplir un peu l'espace...</p>
+                    <p>Créer un nouveau partenaire ou une nouvelle structure dans la base de donnée</p>
                     <img src="../ressources/icones/add.png" alt="icon add" class="icon-card" id="add-icon">
                 </div>
                 <div class="card-footer">
@@ -16,12 +18,13 @@
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-header">
-                    <h3>Gestion des droits</h3>
+                    <h3>Gestion des adhérents</h3>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quasi? Fugit </p>
+                    <p>Accédez aux différents partenaires et structures de la marque, et gérez leurs permissions, informations ...</p>
                     <img src="../ressources/icones/gestion.png" alt="gestion icon" class="icon-card" id="gestion-icon">
                 </div>
                 <div class="card-footer">
@@ -29,12 +32,13 @@
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div>   
             </div>
+
             <div class="card">
                 <div class="card-header">
                     <h3>Demandes en attente</h3>
                 </div>
                 <div class="card-body">
-                    <p>Ici seront regroupées les demandes en attentes des partenaire vis à vis des droits. </br><span class="span_request">Actuellement en attente : <?= count($demandes) ?></span></p>
+                    <p>Retrouvez dans cet espace les demandes envoyées par les adhérents </br><span class="span_request">Actuellement en attente : <?= count($demandes) ?></span></p>
                     <img src="../ressources/icones/airplane.png" alt="" class="icon-card" id="demand-icon">
                 </div>
                 <div class="card-footer">
@@ -42,6 +46,7 @@
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div>   
             </div>
+
             <div class="card">
                 <div class="card-header">
                     <h3>Statistiques</h3>
@@ -55,10 +60,11 @@
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div> 
             </div>
+
+            <a href="/public/reset_bdd_page.php" id="reset_link" onclick="javascript: return confirm('Attention, la remise à zéro est irréversible, continuer ?')">
+                <div class="sticker">
+                    Remise à zéro
+                </div>
+            </a>
         </div>
     </main>
-    <a href="/public/reset_bdd_page.php" id="reset_link" onclick="javascript: return confirm('Attention, la remise à zéro est irréversible, continuer ?')">
-        <div class="sticker">
-            Remise à zéro
-        </div>
-    </a>

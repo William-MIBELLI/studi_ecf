@@ -1,7 +1,7 @@
 <div class="partner_body">
     <h3><?= $partner->getLastName().' '.$partner->getFirstName()?></h3>
     <div class="info" id="address_info">
-        <img src="../ressources/icones/address.png" alt="address_icon" class="partner_icon">
+        <!-- <img src="../ressources/icones/address.png" alt="address_icon" class="partner_icon"> -->
         <div class="info_adress">
             <p><?= $partner->getAddress() ?></p>
             <p><?= $partner->getPostalCode().' '.$partner->getCity()?></p>

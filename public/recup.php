@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_dash.css">
+    <link rel="stylesheet" href="../css/style_recup.css">
     <title>Liste des entités</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
     ?>
     <main class="main_recup">
         <div class="main_recup_title">
-            <h2>Gestion des partenaires et structures</h2>
+            <h1>Gestion des partenaires et structures</h1>
             <div class="visibility_choice">
                 <label for="display_choice">Affichage</label>
                 <select name="display_choise" id="display_select">
@@ -68,10 +69,10 @@
         foreach($entity as $item){
             $temp = json_encode((object)$item);
             if($temp){
-                echo '<pre>';
-                print_r($item);
-                echo '</pre>';
-                print_r($temp);
+                // echo '<pre>';
+                // print_r($item);
+                // echo '</pre>';
+                // print_r($temp);
             }
         }
         $_SESSION['permissions'] = $permissions;
@@ -84,7 +85,7 @@
             }
         </script>
     </main>
-    <?php include_once "../templates/footer.html" ?>
+    <?php include_once "../templates/footer.php" ?>
     <script src="../js/display_entity.js"></script>
  </body>
 </html>

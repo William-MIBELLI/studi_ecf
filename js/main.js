@@ -34,7 +34,29 @@ function displayDiv(radios){
 }
 
 let login_sticker = document.querySelector('#sticker_login');
+let config_form = document.querySelector('#config_form');
+let p_config = document.getElementById('p_config');
+let config_radio = document.querySelectorAll('.config_radio');
+
+// config_radio.forEach(item => {
+//     item.addEventListener('change', (event) => {
+//         console.log(event);
+//         event.stopPropagation();
+//     })
+// })
+
+config_form.addEventListener('click', (e) => {
+    e.stopPropagation();
+})
 
 login_sticker.addEventListener('click', (e) => {
-    alert('click sur le sticker OK');
+    if(config_form.style.display == 'flex'){
+        config_form.style.display = 'none';
+        p_config.style.display = 'block';
+    } else {
+        config_form.style.display = 'flex';
+        //config_form.style.width = 'auto';
+        p_config.style.display = 'none';
+    }
+    e.stopPropagation();
 });

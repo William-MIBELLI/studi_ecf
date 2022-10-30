@@ -1,0 +1,299 @@
+
+/* ////////////////////////////////  GESTION DES DROITS     ////////////////////// */
+
+.partner_container,
+.partner_container_inactive{
+    display: flex;
+    flex-direction: column;
+    color:white;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px grey;
+    width: 60%;
+    margin: auto;
+    margin-top: 30px;
+    background-color: #57606f;
+}
+.partner_header{
+    text-align: center;
+    color: black;
+}
+.partner_container h2,
+.partner_container_inactive h2{
+    margin: 10px 0;
+    color: #FFC900;
+    font-family: 'Permanent Marker', cursive;
+}
+.partner_container h3,
+.partner_container_inactive h3{
+    color: white;
+    font-size: 1rem;
+}
+.visibility_choice{
+    float: right;
+}
+.partner_content{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.partner_body{
+    text-align: center;
+    padding: 20px 0;
+}
+.display_partner{
+    display: flex;
+    flex-direction: row;
+}
+.partner_icon{
+    width: 25px;
+    margin-right: 10px;
+}
+#address_info{
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px 0;
+}
+.main_recup{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.main_recup_title{
+    width: 60%;
+    margin: 0 auto;
+}
+.main_recup_title h2{
+    font-size: 1.4rem;
+    font-weight: 100;
+    color: #141E27;
+}
+.partner_logo {
+    width: 20%;
+    border-right: 1px solid white;
+}
+.partner_logo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0 0 0;
+}
+.partner_info{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    border-right: 1px solid white;
+}
+.logo_partner_info{
+    width: 20px;
+}
+.partner_permissions_list{
+    width: 60%;
+    border-right: 1px solid white;
+}
+.partner_permissions_list p{
+    font-size: 0.8rem;
+}
+.permissions_detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding-left: 10%;
+    color: white;
+    margin: 3px 0;
+}
+.perm_icon{
+    justify-self: flex-end;
+}
+#partner_body_list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.partner_buttons_div{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.partner_buttons_div a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.modif_btn{
+    background-color: white;
+    border: 1px solid #141E27;
+    color: #141E27;
+}
+.desactive_btn{
+    background-color: white;
+    border: 1px solid #fa0b0b;
+    color: #fa0b0b;
+}
+.active_btn{
+    background-color: white;
+    border: 1px solid #4cd137;
+    color: #4cd137;
+}
+.delete_btn{
+    background-color: white;
+    border: 1px solid #fa0b0b;
+    color: #fa0b0b;
+}
+.partner_btn{
+    width: 80%;
+    margin: 10px 0;
+    padding: 13px 0;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+.partner_btn:hover,
+.structure_btn:hover{
+    transform: scale(1.05);
+    transition: all 0.2s ease-out;
+}
+.display_structure{
+    display: flex;
+    flex-direction: column;
+    background-color: #141E27;
+    color: #f1f2f6;
+    border-radius: 0 0 10px 10px;
+    transition: all 0.2s ease-out;
+}
+.display_structure:hover{
+    transition: all 0.2s ease-out;
+}
+.struc_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5%;
+}
+.button_structure{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    margin: 5px;
+    margin-left: auto;
+    transform: rotate(90deg);
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+.button_structure:hover{
+    transform: scale(1.1);
+    transform: rotate(90deg);
+    transition: all 0.2s ease-in;
+}
+
+.structure_info{
+    display: none;
+    transition: all 0.2s ease;
+
+}
+.structure_detail{
+    border-top: 1px solid white;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.structure_name{
+    width: 20%;
+}
+.structure_activity{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.activity_icon{
+    width: 20px;
+}
+.structure_button_div{
+    display: flex;
+    flex-direction: row;
+}
+.structure_btn{
+    padding: 3px;
+    margin: 0 5px;
+    transition: all 0.2s ease-out;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#struc_btn_modif{
+    background-color: white;
+    border: 1px solid #141E27;
+    color: #141E27;
+}
+#struc_btn_desac{
+    background-color: white;
+    border: 1px solid #fa0b0b;
+    color: #fa0b0b;
+}
+#struc_btn_del{
+    background-color: white;
+    border: 1px solid #fa0b0b;
+    color: #fa0b0b;
+}
+
+@media screen and (max-width : 1600px){
+    .partner_container,
+    .partner_container_inactive{
+        width: 80%;
+    }
+}
+@media screen and (max-width : 1200px){
+    .main_recup{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .main_recup_title{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .partner_container,
+    .partner_container_inactive{
+        width: 90%;
+    }
+    .display_partner,
+    .partner_content{
+        flex-direction: column;
+    }
+    .display_partner div{
+        width: 100%;
+    }
+    .partner_logo{
+        display: none;
+    }
+    .partner_info,
+    .partner_permissions_list{
+        border-right: none;
+    }
+    .partner_body .info,
+    #address_info{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+    }
+    #address_info{
+        text-align: center;
+    }
+}
+@media screen and (max-width : 900px){
+    .main_recup{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

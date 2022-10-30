@@ -17,7 +17,7 @@
         die();
     }
     require_once "../script/script_creation.php";
-    require_once "../templates/footer.html";
+    require_once "../templates/footer.php";
     ?>
 </body>
 </html>

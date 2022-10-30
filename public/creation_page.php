@@ -62,5 +62,5 @@
 
     <script src="../js/main.js"></script>
 </body>
-<?php include "../templates/footer.html" ?>
+<?php include "../templates/footer.php" ?>
 </html>
