@@ -45,19 +45,31 @@
                 $_SESSION['entity'][] = $structure;
                 ?>
                 <div class="structure_detail">
-                    <div class="structure_name">
-                        <h4><?= $structure->getCommercialName()?></h4>
+                    <div class="structure_info_admin">
+                        <p class="struc_cm"><?= $structure->getCommercialName()?></p>
+                        <p><?= $structure->getFullName() ?></p>
+                        <div class="struc_address">
+                            <p><?= $structure->getAddress() ?></p>
+                            <p><?= $structure->getPostalCode().' '.$structure->getCity() ?></p>
+                        </div>
+                    </div>
+                    <div class="structure_contact_div">
+                        <p><?= $structure->getPhone() ?></p>
+                        <p><?= $structure->getMail() ?></p>
                     </div>
                     <div class="structure_activity">
-                        <p>En activité : </p>
-                        <?php
-                        if($structure->getIsActive()){
-                        ?> <img src="../ressources/icones/check.png" alt="" class="activity_icon"><?php
-                        }
-                        else{
-                        ?><img src="../ressources/icones/cancel.svg" alt="" class="activity_icon"><?php
-                        }
-                        ?>
+                        <div class="struc_act_detail">
+                            <p>En activité : </p>
+                            <?php
+                            if($structure->getIsActive()){
+                            ?> <img src="../ressources/icones/check.png" alt="" class="activity_icon"><?php
+                            }
+                            else{
+                            ?><img src="../ressources/icones/cancel.png" alt="" class="activity_icon"><?php
+                            }
+                            ?>
+                        </div>
+                        <p>Permissions actives :</p>
                     </div>
                     <div class="structure_button_div">
                         <?php 

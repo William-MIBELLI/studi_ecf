@@ -25,7 +25,7 @@
     ?>
     <main class="main_recup">
         <div class="main_recup_title">
-            <h1>Gestion des partenaires et structures</h1>
+            <h1>Gestion des membres</h1>
             <div class="visibility_choice">
                 <label for="display_choice">Affichage</label>
                 <select name="display_choise" id="display_select">

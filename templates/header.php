@@ -20,7 +20,7 @@
         <?php
     }?>
     <div class="burger">
-        <img src="../ressources/icones/burger.png" alt="" class="burger_icon">
+        <img src="../../ressources/icones/burger.png" alt="" class="burger_icon">
     </div>
-    <script src="../js/header.js"></script>
+    <script src="../../js/header.js"></script>
 </header>

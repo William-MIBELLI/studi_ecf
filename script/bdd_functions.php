@@ -13,8 +13,8 @@ function getPdo() : ?PDO
 
         $pdo = null;
 
-        if($_SESSION['mode'] == 'online'){
-            $pdo = new PDO($uri_online, $user_online, $pass_online);
+        if(isset($_SESSION['node']) && $_SESSION['mode'] == 'online'){
+            $pdo = new PDO($uri_online);
         }else{
             $pdo = new PDO($uri_locale, $user_locale);
         }

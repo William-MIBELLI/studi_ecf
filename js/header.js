@@ -1,10 +1,8 @@
 let burger = document.querySelector('.burger');
 let menu = document.querySelector('.menu');
+let brand = document.querySelector('.brand');
 
-function fromMobilToNormal(){
-    menu.classList.remove('mobil_menu');
-    menu.classList.add('menu');
-}
+checkWidth();
 
 burger.addEventListener('click', e => {
     console.log(menu.classList);
@@ -23,4 +21,18 @@ window.addEventListener('resize', () => {
             fromMobilToNormal();
         }
     }
+    checkWidth();
 });
+
+function checkWidth(){
+    if(window.innerWidth < 430){
+        brand.innerHTML = 'wB';
+    }else {
+        brand.innerHTML = 'WorkOUT Base';
+    }
+}
+
+function fromMobilToNormal(){
+    menu.classList.remove('mobil_menu');
+    menu.classList.add('menu');
+}

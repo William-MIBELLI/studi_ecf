@@ -109,6 +109,11 @@ class User
         return $this;
     }
 
+    public function getCompleteAddress() : string
+    {
+        return $this->address.' '.$this->postal_code.' '.$this->city;
+    }
+
     public function getMail() : string
     {
         return $this->mail;

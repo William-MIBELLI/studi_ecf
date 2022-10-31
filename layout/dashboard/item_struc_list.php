@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="struc_div_footer">
-        <p>Permissions : <?= count($structure->getPermissionsList()) ?> / <?= count($item->getPermissionsList())?></p>
+        <p>Permissions : <?= count($structure->getPermissionsList()) ?>/<?= count($item->getPermissionsList())?></p>
         <?php
         if($structure->getIsActive()){
             ?>

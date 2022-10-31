@@ -211,6 +211,9 @@ footer strong{
         float: none;
         margin: auto;
     }
+    footer, .footer_mode_display{
+        font-size: 0.8rem;
+    }
     .main_container{
         flex-direction: column;
         justify-content: center;
@@ -240,5 +243,8 @@ footer strong{
     .title_container{
         line-height: 5rem;
         margin-bottom: 20px;
+    }
+    .title{
+        font-size: 3rem;
     }
 }

@@ -15,9 +15,16 @@
     background-color: #57606f;
 }
 .partner_header{
-    text-align: center;
-    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+.partner_header img{
+    margin-left: 15px;
+}
+
 .partner_container h2,
 .partner_container_inactive h2{
     margin: 10px 0;
@@ -55,6 +62,7 @@
 }
 .partner_icon{
     width: 25px;
+    height: 25px;
     margin-right: 10px;
 }
 #address_info{
@@ -199,25 +207,40 @@
 .structure_info{
     display: none;
     transition: all 0.2s ease;
-
 }
 .structure_detail{
     border-top: 1px solid white;
     height: 30px;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr 1fr;
     align-items: center;
+    height: 100px;
+    justify-items: center;
 }
-.structure_name{
-    width: 20%;
+.structure_info_admin{
+    display: flex;
+    flex-direction: column;
 }
+.struc_address{
+    margin-top: 10px;
+}
+.structure_contact_div,
 .structure_activity{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+}
+.struc_cm{
+    color: #FFC900;
+    font-weight: bold;
+}
+.struc_act_detail{
+    display : flex;
     flex-direction: row;
-    align-items: center;
 }
 .activity_icon{
-    width: 20px;
+    width: 15px;
+    margin-left: 5px;
 }
 .structure_button_div{
     display: flex;
@@ -289,11 +312,31 @@
     #address_info{
         text-align: center;
     }
+    .structure_detail{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .structure_info_admin,
+    .structure_contact_div,
+    .structure_activity,
+    .structure_button_div{
+        margin: 10px 0;
+        text-align: center;
+    }
 }
 @media screen and (max-width : 900px){
     .main_recup{
         display: flex;
         flex-direction: column;
         width: 100%;
+    }
+}
+@media screen and (max-width : 450px){
+    #partner_body_list p{
+        font-size: 0.6rem;
+    }
+    .partner_icon{
+        width: 15px;
     }
 }
