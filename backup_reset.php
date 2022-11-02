@@ -3,17 +3,21 @@ include_once "../script/bdd_functions.php";
 if(session_status() != 2){
     session_start();
 }
-$pass1 = password_hash('basicpass', PASSWORD_BCRYPT);
+$pass1 = password_hash('dinasty11', PASSWORD_BCRYPT);
 
 try{
     $pdo = getPdo();
 
 } catch (PDOException $e){
-    echo 'Erreur pendant la remise à zéro de la base de donnée :( .';
+    echo 'Erreur pendant la remise à zéro de la base de donnée : '.$e->getMessage();
 }
 if($_SESSION['mode'] == 'locale'){
-    $pdo->exec('DROP DATABASE IF EXISTS ecf_database');
-    $pdo->exec('CREATE DATABASE ecf_database');
+    if($pdo->exec('DROP DATABASE IF EXISTS ecf_database') != 0){
+        echo 'drop OK </br>';
+    }
+    if($pdo->exec('CREATE DATABASE ecf_database') != 0){
+        echo 'Création OK </br>';
+    }
     $pdo = null;
     $pdo = getPdo();
 }
@@ -100,10 +104,10 @@ $pdo->exec('INSERT INTO role (id_role, name) VALUES (1,"ROLE_ADMIN"), (2, "ROLE_
 $stmt =  $pdo->prepare('INSERT INTO user 
 (id_user, commercial_name, firstname, lastname, address, postal_code, city, mail, phone, password, role_id, is_active, first_connection)
     VALUES 
-    (NULL,"Occitanie Sport", "William", "MIBELLI", "42 rue du chateau", "11270", "LA FORCE", "william.mibelli@gmail.com", "0659784516", :password, 2, 1, 1),
-    (NULL,"Yoga Perform", "Jean", "Dugenoux", "359 allée des platanes", "11000", "CARCASSONNE", "jean.dugenoux@gmail.com", "0468247846", :password, 2, 1, 1),
-    (NULL,"CrossFit 31", "Nicolas", "NIEMIRO", "18 rue Barbès", "31000", "TOULOUSE", "crossfit.31@fit.com","0512567848" , :password, 2, 1, 1),
-    (NULL, "admin", "admin","admin", "admin", "11111", "admin", "admin@admin.com", "0000000000", :password, 1, 1, 1)');
+    (NULL,"Buckito Corp", "William", "MIBELLI", "42 rue du chateau", "11270", "LA FORCE", "william.mibelli@gmail.com", "0505050505", :password, 2, 1, 1),
+    (NULL,"saucisse industry", "saucisse", "le chat", "42 rue du chateau", "11270", "LA FORCE", "saucisse.gm@gmail.com", "0707070707", :password, 2, 1, 1),
+    (NULL,"Company du Billy", "Nicolas", "MIBELLI", "18 rue Barbès", "11000", "CARCASSONNE", "nicolasmj@gmail.com","0606060606" , :password, 2, 1, 1),
+    (NULL, "admin", "admin","admin", "admin", "11111", "admin", "admin@admin.com", "0505050505", :password, 1, 1, 1)');
     $stmt->bindValue(':password', $pass1, PDO::PARAM_STR);
     $stmt->execute();
     $pdo->exec('INSERT INTO partner (user_id) VALUES (1)');
