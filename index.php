@@ -52,7 +52,12 @@
                         <label for="online_radio">Mode online</label>
                         <input type="radio" name="mode" id="online_radio" class="config_radio" value="online">
                     </div>
-                    <button type="submit" id="config_btn">Valider</button>
+                    <div class="config_btn_div">
+                        <button type="submit" id="config_btn">Valider</button>
+                        <a href="/script/reset_bdd.php">
+                            <button id="config_btn">Réinitialisation</button>
+                        </a>
+                    </div>
                 </form>
             </div>
         </main>

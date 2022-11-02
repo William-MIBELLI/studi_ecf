@@ -1,20 +1,30 @@
 <?php
 include_once "../script/bdd_functions.php";
-
+if(session_status() != 2){
+    session_start();
+}
 $pass1 = password_hash('dinasty11', PASSWORD_BCRYPT);
 
 try{
-    $pdo = new PDO('mysql:host=localhost;', 'root');
+    $pdo = getPdo();
+
 } catch (PDOException $e){
     echo 'Erreur pendant la remise à zéro de la base de donnée : '.$e->getMessage();
 }
-
-$pdo->exec('DROP DATABASE IF EXISTS ecf_database');
-$pdo->exec('CREATE DATABASE ecf_database');
-$pdo = null;
-$pdo = getPdo();
-
-
+if($_SESSION['mode'] = 'locale'){
+    if($pdo->exec('DROP DATABASE IF EXISTS ecf_database') != 0){
+        echo 'drop OK </br>';
+    }
+    if($pdo->exec('CREATE DATABASE ecf_database') != 0){
+        echo 'Création OK </br>';
+    }
+    $pdo = null;
+    $pdo = getPdo();
+}
+else{
+    $pdo->exec('DROP DATABASE IF EXISTS pfzy7haulos2p8na');
+    $pdo->exec('CREATE DATABASE pfzy7haulos2p8na');
+}
 $pdo->exec('CREATE TABLE Role (
     id_role INT PRIMARY KEY NOT NULL,
     name VARCHAR(100) NOT NULL
