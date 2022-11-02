@@ -102,7 +102,7 @@ $stmt =  $pdo->prepare('INSERT INTO user
     VALUES 
     (NULL,"Occitanie Sport", "William", "MIBELLI", "42 rue du chateau", "11270", "LA FORCE", "william.mibelli@gmail.com", "0659784516", :password, 2, 1, 1),
     (NULL,"Yoga Perform", "Jean", "Dugenoux", "359 allée des platanes", "11000", "CARCASSONNE", "jean.dugenoux@gmail.com", "0468247846", :password, 2, 1, 1),
-    (NULL,"CrossFit 31", "Nicolas", "NIEMIRO", "18 rue Barbès", "31000", "TOULOUSE", "crossfit.31@fit.com","0512567848" , :password, 2, 1, 1),
+    (NULL,"CrossFit 31", "Nicolas", "Goldenboy", "18 rue Barbès", "31000", "TOULOUSE", "crossfit.31@fit.com","0512567848" , :password, 2, 1, 1),
     (NULL, "admin", "admin","admin", "admin", "11111", "admin", "admin@admin.com", "0000000000", :password, 1, 1, 1)');
     $stmt->bindValue(':password', $pass1, PDO::PARAM_STR);
     $stmt->execute();

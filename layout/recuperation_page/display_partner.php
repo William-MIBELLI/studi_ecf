@@ -69,7 +69,7 @@
                             }
                             ?>
                         </div>
-                        <p>Permissions actives :</p>
+                        <p>Permissions actives : <?= count($structure->getPermissionsList()) ?></p>
                     </div>
                     <div class="structure_button_div">
                         <?php 

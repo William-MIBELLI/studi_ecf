@@ -19,6 +19,11 @@ if($_POST['new_pass'] !== $_POST['confirm_pass']){
     require_once "../templates/fail.php";
     die();
 }
+if(strlen($_POST['new_pass']) <= 0){
+    $msg =  'Vous devez renseigner un nouveau mot de passe';
+    require_once "../templates/fail.php";
+    die();
+}
 
  //echo 'verification OK </br>';
  if(updatePassword($_SESSION['username'], $_POST['new_pass'])){

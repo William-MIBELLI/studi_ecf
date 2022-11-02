@@ -72,11 +72,11 @@ input{
     cursor: pointer;
 }
 .sticker{
-    background-color: #EE5007;
+    background-color: white;
     letter-spacing: 1px;
     padding: 5px;
     font-family: sans-serif;
-    color: white;
+    color: #EE5007;
     font-weight: bold;
     font-size: 1em;
     cursor: pointer;
@@ -91,6 +91,12 @@ input{
 .sticker p{
     writing-mode: vertical-lr;
 }
+#reset_link{
+    margin-top: 10px;
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
 #config_form{
     text-align: center;
     display: none;
@@ -100,7 +106,7 @@ input{
     font-size: 0.8rem;
     transition: all 0.2s ease-out;
 }
-#config_form h4{
+#config_form {
     color: black;
     margin-bottom: 10px;
 }
@@ -111,13 +117,13 @@ input{
     align-items: center;
     gap: 10px 0;
 }
-#config_btn{
+.config_btn{
     width: 60%;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 10px auto;
     border-radius: 10px;
     border: none;
     padding: 7px;
+    background-color: #FFC900;
 }
 footer{
     color: #FFC900;
@@ -167,7 +173,11 @@ footer strong{
 }
 @media screen and (max-width : 900px) and (min-width : 601px){
     .title{
-        font-size: 4rem;
+        font-size: 6rem;
+        line-height: 4rem;
+    }
+    h3{
+        margin-top: 40px;
     }
     .main_container{
         margin: auto 0;
