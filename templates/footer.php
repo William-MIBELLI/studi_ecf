@@ -7,6 +7,7 @@ if($_SESSION['mode'] == 'online'){
     $mode = 'Online';
 }else{
     $mode = 'Local';
+    $_SESSION['mode'] = 'locale';
 }
 ?>
 <footer>

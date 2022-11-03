@@ -23,13 +23,12 @@ function getPdo() : ?PDO
         }else{
             $pdo = new PDO($uri_locale, $user_locale);
         }
-
         return $pdo;
 
     } catch (PDOException $e){
 
-        echo 'Erreur pendant la connection a la BDD : '.$e->getMessage();
-         return null;
+        echo 'Erreur pendant la connection a la BDD : '.$e->getMessage().'</br>';
+        return null;
     }
 }
 

