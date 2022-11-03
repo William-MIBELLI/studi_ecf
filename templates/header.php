@@ -22,5 +22,19 @@
     <div class="burger">
         <img src="../../ressources/icones/burger.png" alt="" class="burger_icon">
     </div>
-    <script src="../../js/header.js"></script>
 </header>
+<div class="search_item_container">
+    <!-- <div class="search_item_admin">
+        <p>nom_commercial</p>
+        <p>nom prénom</p>
+    </div>
+    <div class="search_item_mail">
+        <p>mail</p>
+    </div>
+    <div class="search_item_btn_div">
+        <a href=""><button>modifier</button></a>
+        <a href=""><button>desactiver</button></a>
+        <a href=""><button>modifier</button></a>
+    </div> -->
+</div>
+<script src="../../js/header.js"></script>

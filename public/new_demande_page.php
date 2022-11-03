@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_dash.css">
     <link rel="stylesheet" href="../css/style_request.css">
+    <link rel="shortcut icon" href="../ressources/icones/favicon.png" type="image/x-icon">
     <title>Nouvelle demande</title>
 </head>
 <body>
