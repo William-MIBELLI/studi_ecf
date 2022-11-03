@@ -6,12 +6,19 @@ Lien pour accéder au site en ligne : https://studiworkoutbase.herokuapp.com/
 
 Pour vous connecter à l'application, vous avez 2 possibilités :
 
+  En tout premier lieu, il vous faudra initialiser la base de donnée. Pour cela, lorsque vous vous trouvez sur la page de connexion, utlisez les identifiants suivants:
+  
+  -username : resetdatabase
+  -password : passforreset
+  
+  Cela remettra la base de donnée à zéro avec les données de test. vous trouverez les différents identifiants disponible à la fin de ce fichier readme.
+
   1 : En ligne
   
-    1.1 : Cliquer sur le lien ci-dessus.
+    1.1 : Connectez vous sur https://studiworkoutbase.herokuapp.com/
     1.2 : Cliquer sur le bouton 'configuration', selectionner le mode de fonctionnement en 'mode online' et valider.
     1.3 : une fois la page rechargée, vous pouvez vous connecter avec les profils pré-enregistré dans la base de donnée.
-    1.4 : Vous pouvez également réinitialiser la base de donnée en cliquant dans la panneau de configuration sur la bouton 'Remise à zéro'. Cela aura pour effet de supprimer toutes les modifications effectuées sur la base de données et d'insérer les données pré-enregistrées.
+
     
   2 : en local
   
@@ -20,8 +27,7 @@ Pour vous connecter à l'application, vous avez 2 possibilités :
     2.3 : Connectez vous sur 'index.php'
     2.4 : Sur la page d'accueil, cliquez sur le bouton 'configuration' et selectionnez le mode de fonctionnement 'mode local', validez.
     2.5 : une fois la page rechargée, vous pouvez vous connecter avec les profils pré-enregistrés dans la base de donnée.
-    2.6 : Vous pouvez également réinitialiser la base de donnée en cliquant dans la panneau de configuration sur la bouton 'Remise à zéro'. Cela aura pour effet de supprimer toutes les modifications effectuées sur la base de données et d'insérer les données pré-enregistrées.
-    
+  
     
     !!!!!!!!!! LA LISTE DE UTILISATEURS SE TROUVENT A LA FIN DE CE FICHIER   !!!!!!!!!!!!!!!!!!!!!
     
