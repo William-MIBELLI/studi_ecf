@@ -49,14 +49,14 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>Statistiques</h3>
+                    <h3>Déconnexion</h3>
                 </div>
                 <div class="card-body">
-                    <p>Regroupement du nombre de partenaires, de structures, d'admin, nombre de connection, de modifs...</p>
-                    <img src="../ressources/icones/stats.png" alt="" class="icon-card" id="stat-icon">
+                    <p>Le chemin vers la sortie... Revenez vite nous voir 😎</p>
+                    <img src="../ressources/icones/exit.png" alt="" class="icon-card" id="stat-icon">
                 </div>
                 <div class="card-footer">
-                    <p><a href="#">Page de test</a></p>
+                    <p><a href="../index.php">Déconnexion</a></p>
                     <img src="../ressources/icones/arrow.png" alt="" class="arrow-icon">
                 </div> 
             </div>
