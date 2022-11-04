@@ -25,6 +25,7 @@
     switch($role){
         case 1:
             $demandes = getRequests();
+            $_SESSION['entity'] = getAllPartners();
             require_once "../templates/dashboard_admin.php";
             break;
         case 2:

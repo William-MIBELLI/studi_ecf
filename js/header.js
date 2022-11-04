@@ -51,7 +51,7 @@ search.addEventListener('input', e => {
                     </div>
                     <div class="search_item_btn_div">
                         <a href="/public/entity_page.php/?id=${item.id_user}"><button>modifier</button></a>
-                        <a href="/public/activation_page.php/?id=${item.id_user}"><button>desactiver</button></a>
+                        <a href="/public/activation_page.php/?id=${item.id_user}"><button>${item.is_active == 1 ? 'Désactiver' : 'Activer'}</button></a>
                         <a href="/public/delete_page.php/?id=${item.id_user}"><button>Supprimer</button></a>
                     </div>
                 `
