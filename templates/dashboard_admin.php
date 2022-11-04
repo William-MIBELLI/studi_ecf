@@ -10,7 +10,7 @@
                     <h3>Création d'un adhérent</h3>
                 </div>
                 <div class="card-body">
-                    <p>Créer un nouveau partenaire ou une nouvelle structure dans la base de donnée</p>
+                    <p>Créez un nouveau partenaire ou une nouvelle structure dans la base de donnée</p>
                     <img src="../ressources/icones/add.png" alt="icon add" class="icon-card" id="add-icon">
                 </div>
                 <div class="card-footer">

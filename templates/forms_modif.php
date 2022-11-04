@@ -16,31 +16,31 @@ if(isset($entity)){
 <fieldset class="input_admin_div">
     <legend>Informations administrative</legend>
     <label for="commercial_name">Dénomination commerciale</label>
-    <input type="text" name="commercial_name" value="<?= $tab['cm']?>">
+    <input type="text" name="commercial_name" value="<?= $tab['cm']?>" required>
     <label for="firstname">Prénom</label>
-    <input type="text" name="firstname" value="<?= $tab['fn']?>">
+    <input type="text" name="firstname" value="<?= $tab['fn']?>" required>
     <label for="lastname">Nom</label>
-    <input type="text" name="lastname" value="<?= $tab['ln']?>">
+    <input type="text" name="lastname" value="<?= $tab['ln']?>" required>
     <label for="address">Adresse</label>
-    <input type="text" name="address" value="<?= $tab['address']?>">
+    <input type="text" name="address" value="<?= $tab['address']?>" required>
     <label for="postal_code">Code postal</label>
-    <input type="number" name="postal_code" value ="<?= $tab['pc']?>">
+    <input type="number" name="postal_code" value ="<?= $tab['pc']?>" required>
     <label for="city">Ville</label>
-    <input type="text" name="city" value ="<?= $tab['city']?>">
+    <input type="text" name="city" value ="<?= $tab['city']?>" required>
     <label for="phone">Téléphone</label>
-    <input type="number" name="phone" value="<?= $tab['phone']?>">
+    <input type="number" name="phone" value="<?= $tab['phone']?>" required>
 </fieldset>
 <fieldset class="input_admin_div">
     <legend>Informations de connection</legend>
     <label for="mail">Mail</label>
-    <input type="email" name="mail" value="<?= $tab['mail']?>">
+    <input type="email" name="mail" value="<?= $tab['mail']?>" required>
     <?php
     if(!isset($update) || !$update){
         ?>
-        <label for="password">Mot de passe</label>
-        <input type="text" name="password">
+        <label for="password">Mot de passe (8 caractères mini)</label>
+        <input type="password" name="password" required>
         <label for="confirm_password">Confirmation du mot de passe</label>
-        <input type="password" name="confirm_password" >
+        <input type="password" name="confirm_password" required >
         <?php
     }?>
 </fieldset>

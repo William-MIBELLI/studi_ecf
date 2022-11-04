@@ -9,6 +9,7 @@ function getPdo() : ?PDO
     $port = '3306';
     $db = 'pfzy7haulos2p8na';
 
+    $pass_save = 'wob9yf8a8q5qlb67';
 
     $uri_locale = 'mysql:host_localhost;port=8000;dbname=ecf_database';
     $user_locale = 'root';
@@ -27,7 +28,7 @@ function getPdo() : ?PDO
 
     } catch (PDOException $e){
 
-        echo 'Erreur pendant la connection a la BDD : '.$e->getMessage().'</br>';
+        echo 'Impossible de se connecter à la base de donnée 😱, vérifiez le mode de fonctionnement du site dans \'Configuration\'👀.';
         return null;
     }
 }
@@ -138,12 +139,12 @@ function createtUser(array $tab, $role) : bool
                     VALUES
                     (:commercial, :prenom, :nom, :address, :postal_code, :city, :mail, :phone, :password, :role_id , 1, 1)';
         $pdoStatement = $pdo->prepare($request);
-        $pdoStatement->bindValue(':commercial', $tab['commercial_name'], PDO::PARAM_STR);
-        $pdoStatement->bindValue(':prenom', $tab['firstname'], PDO::PARAM_STR);
-        $pdoStatement->bindValue(':nom',$tab['lastname'], PDO::PARAM_STR);
+        $pdoStatement->bindValue(':commercial', strtoupper($tab['commercial_name']), PDO::PARAM_STR);
+        $pdoStatement->bindValue(':prenom', ucfirst(strtolower($tab['firstname'])), PDO::PARAM_STR);
+        $pdoStatement->bindValue(':nom',strtoupper($tab['lastname']), PDO::PARAM_STR);
         $pdoStatement->bindValue(':address',$tab['address'], PDO::PARAM_STR);
         $pdoStatement->bindValue(':postal_code',$tab['postal_code'], PDO::PARAM_INT);
-        $pdoStatement->bindValue(':city',$tab['city'], PDO::PARAM_STR);
+        $pdoStatement->bindValue(':city',strtoupper($tab['city']), PDO::PARAM_STR);
         $pdoStatement->bindValue(':phone', $tab['phone'], PDO::PARAM_STR);
         $pdoStatement->bindValue(':mail',$tab['mail'], PDO::PARAM_STR);
         $pdoStatement->bindValue(':password',password_hash($tab['password'], PASSWORD_BCRYPT) , PDO::PARAM_STR);

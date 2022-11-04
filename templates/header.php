@@ -3,7 +3,7 @@
     <?php
     if($_SESSION['role_id'] == 1){
         ?>
-        <input type="text" placeholder="Rechercher..." class="search">
+        <input type="text" placeholder="Trouver un membre..." class="search">
         <nav class="menu">
             <a href="/public/creation_page.php">Création</a>
             <a href="/public/recup.php">Gestion</a>

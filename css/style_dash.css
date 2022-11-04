@@ -51,7 +51,10 @@ header{
     justify-content: center;
     align-items: center;
 }
-
+.search_item_btn_div{
+    display: flex;
+    justify-content: space-between;
+}
 
 .search_item_admin,
 .search_item_mail,
@@ -65,14 +68,37 @@ header{
 .search_item{
     width: 50vw;
     height: 50px;
-    background-color: #84817a;
+    background-color: #141E27;
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
-    border-top: 1px solid #141E27;
+    border-top: 1px solid white;
+}
+.search_link{
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+    background-color: #141E27;
+    cursor: pointer;
+}
+.search_link:hover{
+    transform: scale(1.05);
+}
+#search_link_modif,
+#search_link_active{
+    border: 1px solid #4cd137;
+    color: #4cd137;
+}
+#search_link_desactive{
+    border: 1px solid #FFC900;
+    color: #FFC900;
+}
+#search_link_delete{
+    border: 1px solid #EE5007;
+    color: #EE5007;
 }
 .menu a{
     color:lightgrey;
@@ -445,6 +471,9 @@ form label{
     .icon-card{
         width: 80%;
     }
+    .search_item{
+        width: 100%;
+    }
 }
 @media screen and (max-width : 850px){
     .container{
@@ -465,6 +494,7 @@ form label{
     }
     .search_item_btn_div{
         width: 60%;
+        justify-content: space-evenly;
     }
     .search_item_admin{
         width: 40%;

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style_dash.css">
+    <link rel="stylesheet" href="../../css/style_recup.css">
     <link rel="shortcut icon" href="../../ressources/icones/favicon.png" type="image/x-icon">
     <title>Details</title>
 </head>
@@ -41,7 +42,7 @@
     ?>
 
     <div class="main_recup_title">
-        <h2>Page de gestion de <?= $entity->getCommercialName()?> Id : <?= $entity->getId(); ?></h2>
+        <h2>Page de gestion de <?= $entity->getCommercialName()?></h2>
     </div>
     <form action="/public/update_entity_page.php" method="POST" class="form_update">
         <?php
