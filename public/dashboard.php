@@ -26,6 +26,7 @@
         case 1:
             $demandes = getRequests();
             $_SESSION['entity'] = getAllPartners();
+            $_SESSION['permissions'] = getAllPermissions();
             require_once "../templates/dashboard_admin.php";
             break;
         case 2:

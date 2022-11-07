@@ -17,15 +17,15 @@ if(isset($_POST) && count($_POST) != 0){
         $pdo = getPdo();
         
         $stmt = $pdo->prepare('UPDATE user SET
-        commercial_name = :cm,
-        firstname = :fn,
-        lastname = :ln,
-        address = :address,
-        postal_code = :pc,
-        city = :city,
-        mail = :mail,
-        phone = :phone
-        WHERE user.id_user = :id');
+                                commercial_name = :cm,
+                                firstname = :fn,
+                                lastname = :ln,
+                                address = :address,
+                                postal_code = :pc,
+                                city = :city,
+                                mail = :mail,
+                                phone = :phone
+                                WHERE user.id_user = :id');
         $stmt->bindValue(':cm', $_POST['commercial_name'], PDO::PARAM_STR);
         $stmt->bindValue(':fn', $_POST['firstname'], PDO::PARAM_STR);
         $stmt->bindValue(':ln', $_POST['lastname'], PDO::PARAM_STR);

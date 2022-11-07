@@ -76,6 +76,7 @@
                 // print_r($temp);
             }
         }
+        $_SESSION['permissions'] = [];
         $_SESSION['permissions'] = $permissions;
 
         ?>

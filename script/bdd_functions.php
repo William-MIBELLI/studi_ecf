@@ -2,14 +2,12 @@
 
 function getPdo() : ?PDO
 {
-    $online_co  = 'mysql://ixyptdhsfypxikdz:wob9yf8a8q5qlb67@ltnya0pnki2ck9w8.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/pfzy7haulos2p8na';
+   
     $host = 'ltnya0pnki2ck9w8.chr7pe7iynqr.eu-west-1.rds.amazonaws.com';
     $un = 'ixyptdhsfypxikdz';
     $pass = 'wob9yf8a8q5qlb67';
-    $port = '3306';
     $db = 'pfzy7haulos2p8na';
 
-    $pass_save = 'wob9yf8a8q5qlb67';
 
     $uri_locale = 'mysql:host_localhost;port=8000;dbname=ecf_database';
     $user_locale = 'root';
