@@ -3,11 +3,6 @@
 function getPdo() : ?PDO
 {
    
-    $host = 'ltnya0pnki2ck9w8.chr7pe7iynqr.eu-west-1.rds.amazonaws.com';
-    $un = 'ixyptdhsfypxikdz';
-    $pass = 'wob9yf8a8q5qlb67';
-    $db = 'pfzy7haulos2p8na';
-
 
     $uri_locale = 'mysql:host_localhost;port=8000;dbname=ecf_database';
     $user_locale = 'root';
